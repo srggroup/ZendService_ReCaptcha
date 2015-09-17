@@ -328,6 +328,8 @@ class ReCaptcha
         return $this->siteKey;
     }
 
+
+
     /**
      * Set the public key
      *
@@ -463,5 +465,48 @@ HTML;
     {
         $response = $this->post($responseField);
         return new Response(null, null, $response);
+    }
+
+
+
+
+
+
+    /**
+     * Old Zend-Recaptcha compatibility
+     *
+     * @return string
+     */
+    public function getPublicKey(){
+        return $this->getSiteKey();
+    }
+
+    /**
+     * Old Zend-Recaptcha compatibility
+     *
+     * @return string
+     */
+    public function getPrivateKey(){
+        return $this->getSecretKey();
+    }
+
+    /**
+     * Old Zend-Recaptcha compatibility
+     *
+     * @param $pubKey
+     * @return ReCaptcha
+     */
+    public function setPublicKey($pubKey){
+        return $this->setSiteKey($pubKey);
+    }
+
+    /**
+     * Old Zend-Recaptcha compatibility
+     *
+     * @param $privKey
+     * @return ReCaptcha
+     */
+    public function setPrivateKey($privKey){
+        return $this->setSecretKey($privKey);
     }
 }
